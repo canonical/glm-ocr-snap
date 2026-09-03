@@ -4,7 +4,7 @@ description: GLM-OCR, a vision-language model specialized for OCR and document u
 model-card-url: https://huggingface.co/ggml-org/GLM-OCR-GGUF
 quantization: Q8_0
 
-disk-size: 1434M  # TODO: verify with `du -sh components/*` after `make init`
+disk-size: 1369M
 
 capabilities:
   - text

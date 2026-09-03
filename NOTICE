@@ -4,10 +4,6 @@ The GLM-OCR model is provided by Zhipu AI (Z.ai) under the MIT License.
 A copy of the MIT License is included herein and can be found in
 LICENSE-glm-ocr.
 
-The complete OCR pipeline integrates PP-DocLayoutV3 (PaddlePaddle) for
-document layout analysis, which is licensed under the Apache License 2.0.
-A copy is included herein and can be found in LICENSE-PP-DocLayoutV3.
-
 The snap packaging code is licensed separately under the terms specified
 in the LICENSE file.
 

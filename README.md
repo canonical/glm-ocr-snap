@@ -1,7 +1,9 @@
 # GLM-OCR snap
 [![glm-ocr](https://snapcraft.io/glm-ocr/badge.svg)](https://snapcraft.io/glm-ocr)
 
-TODO!
+Install [GLM-OCR](https://huggingface.co/ggml-org/GLM-OCR-GGUF), a vision-language model specialized for OCR and document understanding, optimized directly for your hardware.
+This package deploys a high-performance runtime for local inference across arm and x86 platforms.
+It runs efficiently on pure CPU or leverages hardware acceleration via NVIDIA GPUs.
 
 ## Resources
 

@@ -1,0 +1,20 @@
+name: glm-ocr-q8-0
+
+description: GLM-OCR, a vision-language model specialized for OCR and document understanding
+model-card-url: https://huggingface.co/ggml-org/GLM-OCR-GGUF
+quantization: Q8_0
+
+disk-size: 1434M  # TODO: verify with `du -sh components/*` after `make init`
+
+capabilities:
+  - text
+  - vision
+
+components:
+  - model-q8-0-gguf
+  - mmproj-q8-0-gguf
+
+environment:
+  - MMPROJ_FILE=$SNAP_COMPONENTS/mmproj-q8-0-gguf/mmproj-GLM-OCR-Q8_0.gguf
+  - MODEL_FILE=$SNAP_COMPONENTS/model-q8-0-gguf/GLM-OCR-Q8_0.gguf
+  - MODEL_NAME=glm-ocr-q8-0

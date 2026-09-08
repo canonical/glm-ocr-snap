@@ -17,4 +17,3 @@ components:
 environment:
   - MMPROJ_FILE=$SNAP_COMPONENTS/mmproj-q8-0-gguf/mmproj-GLM-OCR-Q8_0.gguf
   - MODEL_FILE=$SNAP_COMPONENTS/model-q8-0-gguf/GLM-OCR-Q8_0.gguf
-  - MODEL_NAME=glm-ocr-q8-0

@@ -6,7 +6,7 @@ hf := pipx run --spec "huggingface_hub[cli]" hf
 SNAP_NAME ?= glm-ocr
 ENGINE ?= cpu
 
-.PHONY: help all init init-submodules install-deps download-models download-model-ocr build install upload smoke-test
+.PHONY: help all init init-submodules install-deps download-models download-model-Q8_0 download-model-Q8_0-mmproj build install upload smoke-test
 
 all: help
 
@@ -55,11 +55,13 @@ init-submodules:
 		git submodule update --init; \
 	fi
 
-download-models: download-model-ocr
+download-models: download-model-Q8_0 download-model-Q8_0-mmproj
 
-download-model-ocr:
+download-model-Q8_0:
 	@echo "Downloading GLM-OCR-GGUF model weights..."
 	$(hf) download ggml-org/GLM-OCR-GGUF GLM-OCR-Q8_0.gguf \
 		--local-dir components/model-q8-0-gguf/
+
+download-model-Q8_0-mmproj:
 	$(hf) download ggml-org/GLM-OCR-GGUF mmproj-GLM-OCR-Q8_0.gguf \
 		--local-dir components/mmproj-q8-0-gguf/

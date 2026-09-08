@@ -42,10 +42,10 @@ platforms:
   amd64:
   arm64:
 
-# plugs:
+plugs:
   # To allow side-loading models into server (root daemon) from user home directory
-  # home:
-  #   read: all
+  home:
+    read: all
 
 environment:
   SNAP_COMPONENTS: /snap/$SNAP_INSTANCE_NAME/components/$SNAP_REVISION
@@ -83,8 +83,8 @@ parts:
 
   cli:
     source:
-      - on amd64: https://github.com/canonical/inference-snaps-cli/releases/download/v2.0.0-beta.12/inference-snaps-cli-linux-amd64.tar.xz
-      - on arm64: https://github.com/canonical/inference-snaps-cli/releases/download/v2.0.0-beta.12/inference-snaps-cli-linux-arm64.tar.xz
+      - on amd64: https://github.com/canonical/inference-snaps-cli/releases/download/v2.0.0-beta.13/inference-snaps-cli-linux-amd64.tar.xz
+      - on arm64: https://github.com/canonical/inference-snaps-cli/releases/download/v2.0.0-beta.13/inference-snaps-cli-linux-arm64.tar.xz
     plugin: dump
     override-build: |
       # For tab completion
@@ -161,24 +161,34 @@ parts:
 
   llamacpp:
     plugin: dump
-    source: 
+    source:
       - on amd64: https://github.com/canonical/llama.cpp-builds/releases/download/b9482/llamacpp-amd64.tar.gz
       - on arm64: https://github.com/canonical/llama.cpp-builds/releases/download/b9482/llamacpp-arm64.tar.gz
+    override-build: |
+      # Move license files to be included in the snap, not the component
+      mkdir -p $CRAFT_PRIME/usr/share/doc/
+      mv licenses $CRAFT_PRIME/usr/share/doc/llama.cpp
+
+      craftctl default
     stage-packages:
       - libgomp1
     organize:
-      "licenses": usr/share/doc/llama.cpp # Add licenses to the snap
       "*": (component/llamacpp)
-    
+
   llamacpp-cuda:
     plugin: dump
-    source: 
+    source:
       - on amd64: https://github.com/canonical/llama.cpp-builds/releases/download/b9482/llamacpp-amd64+cuda12.9.tar.gz
       - on arm64: https://github.com/canonical/llama.cpp-builds/releases/download/b9482/llamacpp-arm64+cuda12.9.tar.gz
+    override-build: |
+      # Move license files to be included in the snap, not the component
+      mkdir -p $CRAFT_PRIME/usr/share/doc/
+      mv licenses $CRAFT_PRIME/usr/share/doc/llama.cpp+cuda
+
+      craftctl default
     stage-packages:
       - libgomp1
     organize:
-      "licenses": usr/share/doc/llama.cpp+cuda # Add licenses to the snap
       "*": (component/llamacpp-cuda)
 
   notice:

@@ -1,30 +1,40 @@
 name: glm-ocr
+title: GLM OCR
 base: core24
-summary: GLM-OCR inference snap
+summary: Local AI with GLM OCR inference snap
 description: |
   GLM-OCR is a compact multimodal model developed by Zhipu AI for optical character
   recognition (OCR) and document understanding. It is designed to efficiently extract
   and interpret text and structured information from images and documents.
 
-  This snap lets you run GLM-OCR locally.
+  Use this snap to quickly install an optimized environment for local inference with GLM-OCR.
 
-  Before you start, make sure to have the necessary drivers installed on the host:
-  https://documentation.ubuntu.com/inference-snaps/how-to/install-drivers/
+  The snap includes the following hardware-optimized inference engines:
+
+  * cpu: Optimized for x64 and ARM (armv8, armv9) CPUs
+  * nvidia-gpu: CUDA-enabled GPU acceleration
+
+  The most suitable engine is automatically selected based on the available hardware.
 
   **Install:**
-  
+
   `sudo snap install glm-ocr`
-  
-  **Get help:**
-  
-  `glm-ocr --help`
-  
-  **Licensing:**
-  
+
+  **Run:**
+
+  `glm-ocr`
+
+  Some accelerators require extra drivers to be usable with this snap:
+  https://documentation.ubuntu.com/inference-snaps/how-to/setup/drivers/
+
+  **License:**
+
   The GLM-OCR model is provided by Zhipu AI under the MIT license.
 
-  The licenses of all bundled software can be found inside the snap at `/snap/glm-ocr/current/usr/share/doc`.
+  The licenses of all the bundled software can be found after installing the snap at
+  `/snap/glm-ocr/current/usr/share/doc`.
 
+icon: snap/gui/icon-256.png
 website: https://documentation.ubuntu.com/inference-snaps
 source-code: https://github.com/canonical/glm-ocr-snap
 issues: https://github.com/canonical/inference-snaps/issues
@@ -257,3 +267,9 @@ apps:
     daemon: simple
     plugs:
       - network-bind
+
+lint:
+  ignore:
+    - metadata:
+      - license
+      - contact
